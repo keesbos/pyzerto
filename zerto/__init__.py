@@ -22,6 +22,8 @@ from errors import (                        # NOQA
 from constants import (                     # NOQA
     ZertoConstant,
     ZertoConstantDict,
+    AuthenticationMethod,
+    authentication_method,
     CommitPolicy,
     commit_policy,
     EntityType,
@@ -74,7 +76,7 @@ class Zerto(object):
         base_path = '/'.join(path.strip('/').split('/')[:2])
         if base_path not in self.paths:
             raise ZertoUnsupportedApi(path)
-        url = "{0}/{1}".format(self.url.rstrip("/"), path.lstrip("/"))
+        url = '{0}/{1}'.format(self.url.rstrip('/'), path.lstrip('/'))
         return url
 
     def _do_request(self, method, path, data=None, headers=None, **kwargs):
@@ -102,8 +104,8 @@ class Zerto(object):
         except:
             result = {}
         if isinstance(result, dict):
-            req.errcode = result.get("errorCode")
-            req.errmsg = result.get("errorMessage")
+            req.errcode = result.get('errorCode')
+            req.errmsg = result.get('errorMessage')
         else:
             req.errcode = None
             req.errmsg = '{0}'.format(result)
@@ -162,21 +164,35 @@ class Zerto(object):
         }
         session = None
         path = 'v1/session/add'
-        if method is None or method.lower() == 'windows':
-            req = self.post_request(path, headers=headers)
-            if req.status_code == requests.codes.ok:
-                session = req.headers.get('x-zerto-session')
-        if not session and method is None or method.lower() == 'vcenter':
+        if method is not None and not isinstance(method, AuthenticationMethod):
+            try:
+                method = authentication_method[method]
+            except KeyError:
+                raise ZertoAuthError(
+                    'Invalid authentication method {0}'.format(method))
+        if method is None or method.code == 0:
+            # Default is windows authentication
+            try:
+                req = self.post_request(path, headers=headers)
+                if req.status_code == requests.codes.ok:
+                    session = req.headers.get('x-zerto-session')
+            except ZertoUnauthorized:
+                pass
+        if not session and (method is None or method.code == 1):
+            # Try or retry AuthenticationMethod 1 (VirtualizationManager)
             headers['content-type'] = 'application/json'
-            req = self.post_request(
-                path,
-                json.dumps({"AuthenticationMethod": 1}),
-                headers=headers,
-            )
-            if req.status_code == requests.codes.ok:
-                session = req.headers.get('x-zerto-session')
+            try:
+                req = self.post_request(
+                    path,
+                    json.dumps({'AuthenticationMethod': 1}),
+                    headers=headers,
+                )
+                if req.status_code == requests.codes.ok:
+                    session = req.headers.get('x-zerto-session')
+            except ZertoUnauthorized:
+                pass
         if not session:
-            raise ZertoAuthError("Windows authentication failed")
+            raise ZertoAuthError('Invalid user name and/or password')
         self.session = session
 
     def get_localsite(self, status=None):

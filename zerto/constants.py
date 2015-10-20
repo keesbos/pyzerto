@@ -27,6 +27,23 @@ class ZertoConstantDict(dict):
             self[constant.code] = self[constant.name] = constant
 
 
+class AuthenticationMethod(ZertoConstant):
+    pass
+
+
+authentication_method = ZertoConstantDict([
+    (0, 'Windows', (
+        'Authentication requires the username and password to access the '
+        'machine where the Zerto Virtual Manager is installed and where the '
+        'APIs will run. Windows authentication is the default if '
+        'AuthenticationMethod is not set.')),
+    (1, 'VirtualizationManager', (
+        'Authentication requires the username and password to access the '
+        'VMware vCenter Server or Microsoft SCVMM accessed by the Zerto '
+        'Virtual Manager where the APIs will run.')),
+], AuthenticationMethod)
+
+
 class CommitPolicy(ZertoConstant):
     pass
 

@@ -38,7 +38,10 @@ class ZertoServiceError(ZertoError):
 
 
 class ZertoAuthError(ZertoServiceError):
-    pass
+
+    def __init__(self, errmsg, *args):
+        super(ZertoAuthError, self).__init__(
+            500, 'AuthError', errmsg, *args)
 
 
 # https://en.wikipedia.org/wiki/List_of_HTTP_status_codes

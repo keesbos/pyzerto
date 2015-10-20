@@ -25,7 +25,7 @@ import zerto
 
 zapi = zerto.Zerto('https://127.0.0.1:9669')
 zapi.get_apis()
-zapi.get_session('user', 'password', 'vcenter')
+zapi.get_session('user', 'password')
 print('VRAs')
 for i in zapi.get_vra():
     print(i)
