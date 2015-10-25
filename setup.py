@@ -22,7 +22,7 @@ setup(
         'License :: OSI Approved :: Apache Software License',
     ],
     packages=['zerto'],
-    install_requires=['requests']
+    # install_requires=['requests'] # if not a recent python version
 )
 
 # vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
