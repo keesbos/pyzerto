@@ -42,3 +42,5 @@ print('Tasks')
 for i in zapi.get_task():
     print(i)
 ```
+
+To install (preferably in virtualenv): easy_install https://github.com/keesbos/pyzerto/tarball/master
