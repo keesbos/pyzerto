@@ -4,6 +4,16 @@
 import os
 from setuptools import setup
 
+try:
+    import requests     # NOQA
+except ImportError:
+    import sys
+    sys.stderr.write(
+        "Eighter install requests module with a package manager "
+        "or with easy_install or pip\n"
+        "E.g. easy_install requests\n"
+    )
+
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
