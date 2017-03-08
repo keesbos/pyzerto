@@ -6,7 +6,7 @@ The Zerto module interfaces with the Zerto Api.
 
 Zerto: Disaster Recovery & Virtual Data Replication - zerto.com
 
-Api documentation: http://s3.amazonaws.com/zertodownload_docs/Latest/REST%20API%20Reference%20Guide.pdf
+Api documentation: https://www.zerto.com/myzerto/technical-documentation/
 
 License: Apache (http://www.apache.org/licenses/LICENSE-2.0)
 

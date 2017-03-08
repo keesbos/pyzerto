@@ -230,10 +230,10 @@ vpg_status = ZertoConstantDict([
     (1, 'MeetingSLA', 'The VPG is meeting the SLA specification.'),
     (2, 'NotMeetingSLA', 'The VPG is not meeting the SLA specification for '
         'both the journal history and RPO SLA settings.'),
-    (3, 'HistoryNotMeetingSLA', 'The VPG is not meeting the SLA '
-        'specification for the journal history.'),
-    (4, 'RpoNotMeetingSLA', 'The VPG is not meeting the SLA specification '
+    (3, 'RpoNotMeetingSLA', 'The VPG is not meeting the SLA specification '
         'for the RPO SLA setting.'),
+    (4, 'HistoryNotMeetingSLA', 'The VPG is not meeting the SLA '
+        'specification for the journal history.'),
     (5, 'FailingOver', 'The VPG is in a Failover operating.'),
     (6, 'Moving', 'The VPG is in a Move operation.'),
     (7, 'Deleting', 'The VPG is being deleted.'),
