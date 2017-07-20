@@ -149,6 +149,9 @@ event_type = ZertoConstantDict([
     (55, 'PostScript'),
     (56, 'RemoveVmFromVc'),
     (57, 'ChangeVraPasswordIpSettings'),
+    (58, 'FlrJournalMount'),
+    (59, 'FlrJournalUnmount'),
+    (60, 'Login'),
 ], EventType)
 
 
