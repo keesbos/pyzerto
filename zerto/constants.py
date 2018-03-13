@@ -152,6 +152,14 @@ event_type = ZertoConstantDict([
     (58, 'FlrJournalMount'),
     (59, 'FlrJournalUnmount'),
     (60, 'Login'),
+    (61, 'HostEnteringMaintenanceMode'),
+    (62, 'HostExitingMaintenanceMode'),
+    (63, 'VmRestoredToSnapshot'),
+    (64, 'ProtectedVmRemovedFromHypervisor'),
+    (65, 'ProtectedVmAddedToHypervisor'),
+    (66, 'PauseProtectionGroupForMissingVm'),
+    (67, 'ResumeProtectionGroupAfterUserRemovedMissingVm'),
+    (68, 'ResumeProtectionGroupAfterVmReadded'),
 ], EventType)
 
 
