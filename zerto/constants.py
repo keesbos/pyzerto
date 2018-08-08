@@ -101,7 +101,7 @@ event_type = ZertoConstantDict([
     (7, 'ProtectVM'),
     (8, 'UnprotectVM'),
     (9, 'InstallVra'),
-    (0, 'UninstallVra'),
+    (10, 'UninstallVra'),
     (11, 'UpdateProtectionGroup'),
     (12, 'InsertTaggedCP'),
     (13, 'HandleMirrorPromotion'),
