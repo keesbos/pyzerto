@@ -8,7 +8,7 @@ class ZertoObject(object):
         return str(getattr(self, 'values', None))
 
     def __repr__(self):
-        return '<{} {}>'.format(
+        return '<{0} {1}>'.format(
             self.__class__.__name__, getattr(self, 'values', None))
 
 
