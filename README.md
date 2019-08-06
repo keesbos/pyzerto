@@ -43,4 +43,6 @@ for i in zapi.get_task():
     print(i)
 ```
 
-To install (preferably in virtualenv): easy_install https://github.com/keesbos/pyzerto/tarball/master
+To install (preferably in virtualenv) with easy_install or pip:
+* `easy_install https://github.com/keesbos/pyzerto/tarball/master`
+* `pip install git@github.com:keesbos/pyzerto.git`
