@@ -146,9 +146,11 @@ class Zerto(object):
     def delete_request(self, path, **kwargs):
         return self._do_request('DELETE', path, **kwargs)
 
-    def get_apis(self):
+    def get_apis(self, **kwargs):
         headers = {'content-type': 'application/json'}
-        req = self.get_request('v1', headers=headers)
+        if 'headers' in kwargs:
+            headers.update(kwargs.pop('headers'))
+        req = self.get_request('v1', headers=headers, **kwargs)
         self.paths = list(sorted(['v1'] + [
             i['href'].split('/', 3)[-1].strip('/')
             for i in req.json()
