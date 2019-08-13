@@ -24,8 +24,8 @@ class Alert(ZertoObject):
         self.is_dismissed = kwargs.get('IsDismissed')
 
     def __str__(self):
-        return 'identifier={0}, occurred_on={1}, event_type={2}'.format(
-            self.identifier, self.occurred_on, self.event_type)
+        return 'help_identifier={0}, entity={1}, event_type={2}'.format(
+            self.help_identifier, self.entity, self.level)
 
 
 # vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
